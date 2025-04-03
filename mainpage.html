@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PROJECT DBMS</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .top-bar {
+            background-color: #7e3672;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        .top-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .top-bar .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-left: -10px;
+        }
+        .top-bar .nav-buttons button {
+            background-color: #ccd24e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 20px;
+        }
+        .top-bar .nav-buttons button:hover {
+            background-color: #ccd24e;
+        }
+        header {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            margin-top: 50px; 
+        }
+        h1 {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 48px;
+            color: #333;
+        }
+        h3 {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            color: #666;
+        }
+        video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .info-section {
+            background-color: lavender;
+            padding: 20px;
+            text-align: center;
+        }
+        .info-section h2 {
+            margin-top: 0;
+            font-size: 24px;
+            color: #333;
+        }
+        .info-section p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .support {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+        }
+        .support .support-content {
+            flex: 1;
+            padding-right: 5px;
+        }
+        .support .photo {
+            flex: 1;
+            text-align: center;
+        }
+        .support.photo img {
+            max-width: 100%;
+            width: 20px; /* Adjust the width as needed */
+            height: 20px;
+            border-radius: 10px; 
+        }
+        .small-image {
+            width: 700px; /* Adjust the width as needed */
+            height: 400px; /* Adjust the height as needed */
+            border-radius: 40px; /* Optional: Make the photo look cute */
+        }
+        
+        
+        .image-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .image-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            border-radius: 50px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
+        }
+        .image-button img {
+            width: 300px;
+            height: 220px;
+            border-radius: 50px; /* Make the image circular */
+            margin-bottom: 20px;
+        }
+        .image-button span {
+            font-size: 16px;
+            color: #333;
+        }
+        .image-button:hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow on hover */
+        }
+        
+
+.parent-container {
+    display: flex; /* Use flexbox layout */
+    justify-content: flex-start; /* Start from the left */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    padding-right: 25%; /* Adjust this value to move closer to the right edge */
+    padding-left: 25%; /* Adjust to ensure content stays in between the middle and right */
+}
+.button-container {
+    display: inline-block;
+    margin-right: 20px; /* Space between button and text */
+}
+
+.upload-button {
+    background-color: #ffffff; 
+    border: solid;
+    color: rgb(25, 13, 13);
+    padding: 15px 15px;
+    transform: translate(0, 0); /* No need to vertically translate */
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 50px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth transition for hover effects */
+}
+
+.upload-button img {
+    width: 300px;
+    height: 300px;
+    border-radius: 25px; /* Make the image circular */
+    margin-bottom: 20px;
+}
+
+.upload-button:hover {
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance the shadow on hover */
+}
+.content-container {
+    display: inline-block;
+}
+
+.instruction-text {
+    font-size: 20px;
+    color: #333; /* Text color */
+    font-family: Arial, sans-serif;
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: block; /* Ensures it behaves as a block element */
+     margin: 20; /* Removes any default margin */
+}
+
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">ADOPAWFECT</div>
+        <d iv class="nav-buttons">
+            <button>Who We Are</button>
+            <button>Our Story</button>
+            <button>Donate</button>
+        </div>
+    </div>
+    <header>
+        <video autoplay muted loop>
+            <source src="adopawfect_video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="content">
+            <h1>ADOPAWFECT</h1>
+            <h3>FIND YOUR PAWFECT HOME</h3>
+        </div>
+    </header>
+
+    <!-- info-section --> 
+
+    <section class="info-section">
+        <h2>ADOPAWFECT is a user-friendly, comprehensive platform </h2>
+            <h2>to facilitate the adoption process.</h2>
+        <p>Whether you're looking to adopt a dog, cat, or any other pet, </p>
+          <p> our website provides all the tools you need to make informed decisions </p> 
+          <p> and connect with shelters and rescue organizations.</p>
+        <p>We offer detailed profiles of animals, including their backgrounds,</p> 
+        <p>personalities, and special needs, ensuring that </p>
+            <p> every adoption is a perfect match.</p>
+    </section>
+
+     <!-- support-content--> 
+
+    <section class="support">
+        <div class="support-content">
+            <h2>ADOPAWFECT is a user-friendly, comprehensive platform</h2>
+            <h2>to facilitate the adoption process.</h2>
+            <p>support us beacause we are paavam</p>
+            <p>dont we look paavam??</p>
+            <p>we will definitely help dra</p>
+            <p>every adoption is a perfect match.</p>
+        </div>
+        <div class="photo"></div>
+            <img src="support.jpg" alt="Adopawfect Photo" class="small-image">
+        </div>
+    </section>
+    <h3> LOOKING FOR PET ??????? THEN SHUTUP AND LOOK....</h3>
+     <!-- image-button --> 
+
+     <section class="image-buttons">
+        <button class="image-button">
+            <img src="dog.jpg" alt="Dog">
+        
+         <span>Find your Dog</span></button>
+        
+        <button class="image-button">
+            <img src="cat.jpg" alt="Cat">
+        
+          <span>Find your Cat</span></button>
+        
+        <button class="image-button">
+            <img src="bird.jpg" alt="Bird">
+        
+            <span>Find your Bird</span></button>
+        
+        <button class="image-button">
+            <img src="fish.jpeg" alt="Fish">
+        
+            <span>Find your Fish</span></button>
+        
+        <button class="image-button">
+            <img src="rabbit.jpeg" alt="Rabbit">
+      
+            <span>Find your Rabbit</span>  </button>
+        
+        <button class="image-button">
+            <img src="others.jpeg" alt="Other">
+        
+            <span>Find your Other</span></button>
+        
+            <section class="parent-container">
+                <div class="button-container">
+                    <button class="upload-button" onclick="document.getElementById('fileInput').click();">
+                        <img src="uploadphoto.png" alt="Photo uploading"/>
+                    </button>
+                    <input type="file" id="fileInput" style="display: none;" />
+                </div>
+                <div class="content-container">
+                    <p class="instruction-text">All you have to do is click a picture</p>
+                </div>
+            </section>
+            
+            
+</body>
+</html>
